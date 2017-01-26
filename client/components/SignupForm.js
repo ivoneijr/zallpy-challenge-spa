@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import { browserHistory } from 'react-router';
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class SignupForm extends React.Component {
       username: '',
       email: '',
       password: '',
-      passwordConfirmation: '',
+      password_confirmation: '',
       errors: {},
       isLoading: false
     }
@@ -22,13 +23,16 @@ class SignupForm extends React.Component {
   }
   
   onSubmit(e) {
-    this.setState({ errors: {}, isLoading: true });
     e.preventDefault();
     
-    this.props.userSignupRequest(this.state)
-    .then(
-      () => {},
-      ({ data }) => this.setState({ errors: data.errors, isLoading: false })
+    this.setState({ errors: {}, isLoading: true });
+    this.props.userSignupRequest(this.state).then(
+      () => {
+        browserHistory.push('/');
+      },
+      ({ data }) => {
+        this.setState({ errors: data.errors, isLoading: false })
+      }
     );
   }
   
@@ -78,10 +82,10 @@ class SignupForm extends React.Component {
           <div className="form-group">
             <label className="control-label">Password confirmation</label>
             <input 
-              value={this.state.passwordConfirmation}
+              value={this.state.password_confirmation}
               onChange={this.onChange}
               type="password"
-              name="passwordConfirmation"
+              name="password_confirmation"
               className="form-control"
               placeholder="Password confirmation"
             />
