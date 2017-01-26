@@ -6,11 +6,12 @@ import { userSignupRequest } from '../actions/signupActions';
 class SignupPage extends React.Component {
   render() {
     const { userSignupRequest } = this.props;
+    
     return (
       <div className="jumbotron" style={{marginTop: "80px"}}>
         <div className="row">
           <div className="col-md-4 col-md-offset-4">
-            <SignupForm userSignupRequest={userSignupRequest}/>
+            <SignupForm userSignupRequest={ userSignupRequest }/>
           </div>
         </div>
       </div>

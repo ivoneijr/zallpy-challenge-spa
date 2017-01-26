@@ -7,6 +7,7 @@ import webpackHotMiddleware from 'webpack-hot-middleware'
 import webpackConfig from '../webpack.config.dev'
 
 let app = express();
+
 const compiler = webpack(webpackConfig);
 
 app.use(webpackMiddleware(compiler, {
@@ -16,6 +17,9 @@ app.use(webpackMiddleware(compiler, {
 }))
 app.use(webpackHotMiddleware(compiler))
 
+app.get('/ping', (req, res) => {
+  res.send({status: 'ok'});
+});
 app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, './index.html'))
     // res.send({status: 'ok'});
