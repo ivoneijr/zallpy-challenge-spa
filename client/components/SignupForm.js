@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -21,7 +20,7 @@ class SignupForm extends React.Component {
   
   onSubmit(e) {
     e.preventDefault();
-    axios.post('http://localhost:3000/users', {user: this.state});
+    this.props.userSignupRequest(this.state);
   }
   
   render() {
@@ -49,7 +48,7 @@ class SignupForm extends React.Component {
               name="email"
               className="form-control"
               placeholder="Email"
-              />
+            />
           </div>
           <div className="form-group">
             <label className="control-label">Password</label>
@@ -60,7 +59,7 @@ class SignupForm extends React.Component {
               name="password"
               className="form-control"
               placeholder="Password"
-              />
+            />
           </div>
           <div className="form-group">
             <label className="control-label">Password confirmation</label>
@@ -71,7 +70,7 @@ class SignupForm extends React.Component {
               name="passwordConfirmation"
               className="form-control"
               placeholder="Password confirmation"
-              />
+            />
           </div>
           
           <div className="form-group"> 
@@ -81,6 +80,10 @@ class SignupForm extends React.Component {
       </form>
     );
   }
+}
+
+SignupForm.propTypes = {
+  userSignupRequest: React.PropTypes.func.isRequired
 }
 
 export default SignupForm;
