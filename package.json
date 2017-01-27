@@ -2,10 +2,10 @@
   "name": "challenge-spa",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "npm run server",
-    "server": "nodemon --watch server --exec babel-node -- server/index.js"
+    "start": "node index.js",
+    "server": "nodemon --watch server --exec babel-node -- server.js"
   },
   "author": "Ivonei Marques",
   "license": "ISC",
