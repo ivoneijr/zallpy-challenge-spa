@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server/index.js",
+    "start": "npm run server",
     "server": "nodemon --watch server --exec babel-node -- server/index.js"
   },
   "author": "Ivonei Marques",
